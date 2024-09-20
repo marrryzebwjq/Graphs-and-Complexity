@@ -75,8 +75,39 @@ public class GraphM4A {
                     tmp1[j] = tmp1[j] + 1;
                 }
         return (new TwoArrays4A(tmp1, tmp2));
-
     }
+
+    //method to be applied only when type=1
+
+    /**
+     * @param outMatrix display the result as an adjacency matrix (or as an adjacency list)
+     */
+    public void printTransposed(boolean outMatrix) {
+        if(outMatrix)
+            Tools4A.printMatrix(transposedMM());
+        else
+            transposedML(); //TODO Tools4A.printAdjList(...);
+    }
+
+    /**
+     * Compute the transposed graph, represented by an adjacency matrix
+     */
+    private float[][] transposedMM() {
+        float[][] trans = new float[this.adjmat.length][this.adjmat.length];
+        for (int i = 0; i < this.n; i++) {
+            for (int j = 0; j < this.n; j++) {
+                trans[i][j] = this.adjmat[j][i];
+            }
+        }
+        return trans;
+    }
+    /**
+     * Compute the transposed graph, represented by an adjacency list
+     */
+    private void transposedML() {
+        //TODO
+    }
+
 
     public int getType() {
         return this.type;

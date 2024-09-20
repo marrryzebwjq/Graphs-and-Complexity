@@ -58,7 +58,6 @@ public class GraphM4A {
                 if (this.adjmat[i][j] != 0)
                     tmp[i] = tmp[i] + 1;
         return tmp;
-
     }
 
     //method to be applied only when type=1
@@ -83,7 +82,4 @@ public class GraphM4A {
         return this.type;
     }
 
-    public float[][] getAdjmat() {
-        return adjmat;
-    }
 }

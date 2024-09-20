@@ -24,6 +24,12 @@ public class Main4A {
                 int[] degree = graphM.degree();
                 System.out.println("(Matrix) Degrees for vertices from 1 to " + degree.length + " for the given undirected graph");
                 Tools4A.printArray(degree);
+
+                /* TODO
+                System.out.println("Exercice 2 :");
+                System.out.println("Teste s'il y a un chemin dans le graphe pour la séquence de sommets donnée");
+                graphM.hasPath([1,2,3,4,5,6,4,2,1,3]);
+                 */
             } else { //directed
                 TwoArrays4A pair = graphM.degrees();
                 int[] indegree = pair.in(); //the result of graphM.degrees() is a pair of arrays, indegree and outdegree
@@ -49,11 +55,25 @@ public class Main4A {
                 int[] degree = graphL.degree();
                 System.out.println("(List) Degrees for vertices from 1 to " + degree.length + " for the given undirected graph");
                 Tools4A.printArray(degree);
+
+                System.out.println("Affichage de la liste d'adjacence :");
+                Tools4A.printAdjList(graphL.getAdjlist(), graphL.getN());
+                /* TODO
+                System.out.println("Exercice 2 :");
+                System.out.println("Teste s'il y a un chemin dans le graphe pour la séquence de sommets donnée");
+                graphL.hasPath([1,2,3,4,5,6,4,2,1,3]);
+                 */
             }
             if (graphL.getType() == 0 && graphL.getWeighted() == 1) { //undirected and weighted
                 int[] degree = graphL.degreeW();
                 System.out.println("(List) Degrees for vertices from 1 to " + degree.length + " for the given undirected graph");
                 Tools4A.printArray(degree);
+
+                /* TODO
+                System.out.println("Exercice 2 :");
+                System.out.println("Teste s'il y a un chemin dans le graphe pour la séquence de sommets donnée");
+                graphL.hasPath([1,2,3,4,5,6,4,2,1,3]);
+                 */
             }
             if (graphL.getType() == 1 && graphL.getWeighted() == 0) { //directed and unweighted
                 TwoArrays4A pair = graphL.degrees();

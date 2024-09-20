@@ -28,4 +28,7 @@ public class WeightedNode4A {
         return (this.val);
     }
 
+    public Float getWeight() {
+        return weight;
+    }
 }

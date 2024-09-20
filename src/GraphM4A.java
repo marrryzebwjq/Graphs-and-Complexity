@@ -82,4 +82,7 @@ public class GraphM4A {
         return this.type;
     }
 
+    public float[][] getAdjmat() {
+        return adjmat;
+    }
 }

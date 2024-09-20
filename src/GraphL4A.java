@@ -141,7 +141,17 @@ public class GraphL4A {
         return this.weighted;
     }
 
+    public WeightedNode4A[] getAdjlistW() {
+        return adjlistW;
+    }
 
+    public Node4A[] getAdjlist() {
+        return adjlist;
+    }
+
+    public int getN() {
+        return n;
+    }
 }
 		
 	

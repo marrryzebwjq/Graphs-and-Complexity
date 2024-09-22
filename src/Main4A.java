@@ -53,21 +53,21 @@ public class Main4A {
             // If we choose the representation by adjacency lists ------------------------------------------------------
             sc = new Scanner(file);
             GraphL4A graphL = new GraphL4A(sc);
+
             if (graphL.getType() == 0 && graphL.getWeighted() == 0) { //undirected and unweighted
                 int[] degree = graphL.degree();
                 System.out.println("(List) Degrees for vertices from 1 to " + degree.length + " for the given undirected graph");
                 Tools4A.printArray(degree);
 
-                System.out.println("Affichage de la liste d'adjacence :");
-                Tools4A.printAdjList(graphL.getAdjlist(), graphL.getN());
                 System.out.println("Liste d'adjacence :");
+                Tools4A.printAdjList(graphL.getAdjlist());
                 /* TODO
                 System.out.println("Exercice 2 :");
                 System.out.println("Teste s'il y a un chemin dans le graphe pour la séquence de sommets donnée");
                 graphL.hasPath([1,2,3,4,5,6,4,2,1,3]);
                  */
             }
-            if (graphL.getType() == 0 && graphL.getWeighted() == 1) { //undirected and weighted
+            else if (graphL.getType() == 0 && graphL.getWeighted() == 1) { //undirected and weighted
                 int[] degree = graphL.degreeW();
                 System.out.println("(List) Degrees for vertices from 1 to " + degree.length + " for the given undirected graph");
                 Tools4A.printArray(degree);
@@ -80,7 +80,7 @@ public class Main4A {
                 graphL.hasPath([1,2,3,4,5,6,4,2,1,3]);
                  */
             }
-            if (graphL.getType() == 1 && graphL.getWeighted() == 0) { //directed and unweighted
+            else if (graphL.getType() == 1 && graphL.getWeighted() == 0) { //directed and unweighted
                 TwoArrays4A pair = graphL.degrees();
                 int[] indegree = pair.in();
                 int[] outdegree = pair.out();
@@ -89,9 +89,8 @@ public class Main4A {
                 System.out.println("(List) Outdegrees for vertices from 1 to " + indegree.length + " for the given digraph");
                 Tools4A.printArray(outdegree);
 
-                System.out.println("Affichage de la liste d'adjacence :");
-                Tools4A.printAdjList(graphL.getAdjlist(), graphL.getN());
                 System.out.println("Liste d'adjacence :");
+                Tools4A.printAdjList(graphL.getAdjlist());
                 /* TODO
                 System.out.println("Exercice 1");
                 System.out.println("Liste d'adjacence de la transposée :");
@@ -100,7 +99,7 @@ public class Main4A {
                 graphL.printTransposed(false);
                  */
             }
-            if (graphL.getType() == 1 && graphL.getWeighted() == 1) { //directed and weighted
+            else if (graphL.getType() == 1 && graphL.getWeighted() == 1) { //directed and weighted
                 TwoArrays4A pair = graphL.degreesW();
                 int[] indegree = pair.in();
                 int[] outdegree = pair.out();

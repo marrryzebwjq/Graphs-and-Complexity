@@ -38,9 +38,17 @@ public class Tools4A {
      * @param list
      * @param length
      */
-    public static void printAdjList(Node4A[] list, int length) {
-        for(int i = 0; i < length; i++ ) {
-            System.out.printf("%d : %d -> %d", i, list[i].getVal(), list[i].getNext().getVal());
+    public static void printAdjList(Node4A[] list) {
+        Node4A current = list[0];
+        int i = 0;
+        while(current != null) {
+            Node4A next = current.getNext();
+            while (next != null) {
+                System.out.printf("%d : %d -> %d\n", i, current.getVal(), next.getVal());
+                next = next.getNext();
+            }
+            current = current.getNext();
+            i++;
         }
     }
 }

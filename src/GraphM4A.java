@@ -35,10 +35,8 @@ public class GraphM4A {
                 if ((line.length > 1) && (line[1].charAt(0) != ' ')) {
                     String[] successors = line[1].split(", ");
                     System.out.println(i + " " + successors.length);
-                    for (int h = 0; h < successors.length; h++) {
-                        System.out.println(Integer.parseInt(successors[h]));
+                    for (int h = 0; h < successors.length; h++)
                         this.adjmat[i - 1][Integer.parseInt(successors[h]) - 1] = 1;
-                    }
                 }
             } else {
                 line = line[1].split(" // ");
@@ -88,10 +86,10 @@ public class GraphM4A {
      * @param outMatrix display the result as an adjacency matrix (or as an adjacency list)
      */
     public void printTransposed(boolean outMatrix) {
-        if(outMatrix)
+        if (outMatrix)
             Tools4A.printMatrix(transposedMM());
         else
-            transposedML(); //TODO Tools4A.printAdjList(...);
+            Tools4A.printAdjList(transposedML(), transposedMLW());
     }
 
     /**
@@ -108,10 +106,71 @@ public class GraphM4A {
         return trans;
     }
     /**
-     * Compute the transposed graph, represented by an adjacency list
+     * TP1 Exercise 1
+     * Compute the transposed graph, represented by an unweighted adjacency list
      */
-    private void transposedML() {
-        //TODO
+    private Node4A[] transposedML() {
+        if (this.weighted == 1) return null;
+
+        Node4A[] adjlist = new Node4A[this.n];
+        int[] successeurs = new int[this.n]; //tmp
+        int k;
+        //liste des successeurs du noeud j
+        for (int j = 0; j < this.n; j++) {
+            k = 0;
+            for (int i = 0; i < this.n; i++) {
+                if (this.adjmat[i][j] != 0) {
+                    successeurs[k] = i;
+                    k++;
+                }
+            }
+            //ajout du noeud j et de ses successeurs dans adjlist
+            Node4A n = new Node4A(successeurs[0], null); //n.val = premier successeur de n
+            adjlist[j] = n;
+            k = 1;
+            while (successeurs[k] != 0) { //n.next = autre successeur de n
+                Node4A s = new Node4A(successeurs[k], null);
+                n.setNext(s);
+                n = s;
+                k++;
+            }
+        }
+        return adjlist;
+    }
+
+    /**
+     * TP1 Exercise 1
+     * Compute the transposed graph, represented by a weighted adjacency list
+     */
+    private WeightedNode4A[] transposedMLW() {
+        if (this.weighted == 0) return null;
+
+        WeightedNode4A[] adjlistW = new WeightedNode4A[this.n];
+        int[] successeurs = new int[this.n]; //tmp
+        float[] poids = new float[this.n]; //tmp
+        int k;
+        //liste des successeurs du noeud j
+        for (int j = 0; j < this.n; j++) {
+            k = 0;
+            for (int i = 0; i < this.n; i++) {
+                if (this.adjmat[i][j] != 0) {
+                    successeurs[k] = i;
+                    poids[k] = this.adjmat[i][j];
+                    k++;
+                }
+            }
+            //ajout du noeud j et de ses successeurs dans adjlist
+            WeightedNode4A n = new WeightedNode4A(successeurs[0], null, poids[0]); //n.val = premier successeur de n
+            adjlistW[j] = n;
+            k = 1;
+            while (successeurs[k] != 0) { //n.next = autre successeur de n
+                WeightedNode4A s = new WeightedNode4A(successeurs[k], null, poids[k]);
+                n.setNext(s);
+                n = s;
+                k++;
+            }
+        }
+        return adjlistW;
     }
 
 

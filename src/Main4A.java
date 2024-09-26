@@ -44,8 +44,6 @@ public class Main4A {
                 System.out.println("TP1 Exercice 1");
                 System.out.println("Matrice d'adjacence de la transposée :");
                 graphM.printTransposed(true);
-                /* TODO
-                 */
                 System.out.println("Liste d'adjacence de la transposée :");
                 graphM.printTransposed(false);
             }

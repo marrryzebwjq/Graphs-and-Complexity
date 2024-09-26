@@ -54,6 +54,7 @@ public class Tools4A {
                     succ = succ.getNext();
                 }
             }
+            System.out.println();
         }
     }
 }

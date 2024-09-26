@@ -12,7 +12,7 @@ public class GraphL4A {
     public GraphL4A(Scanner sc) {
         String[] firstline = sc.nextLine().split(" ");
         this.n = Integer.parseInt(firstline[0]);
-        System.out.println(this.n);
+        System.out.println("Number of vertices " + this.n);
         if (firstline[1].equals("undirected"))
             this.type = 0;
         else
@@ -141,14 +141,17 @@ public class GraphL4A {
         return this.weighted;
     }
 
+    //TP1
     public WeightedNode4A[] getAdjlistW() {
         return adjlistW;
     }
 
+    //TP1
     public Node4A[] getAdjlist() {
         return adjlist;
     }
 
+    //TP1
     public int getN() {
         return n;
     }

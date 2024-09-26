@@ -10,6 +10,7 @@ public class Tools4A {
 
 
     /**
+     * TP1
      * Affiche la matrice
      * @param mat
      */
@@ -23,32 +24,36 @@ public class Tools4A {
     }
 
     /**
-     * Affiche la liste d'adjacence pondérée (remarque : leurs listes ont l'air totalement mal foutues je comprends r)
-     * @param list
-     * @param length
-     */
-    public static void printAdjListW(WeightedNode4A[] list, int length) {
-        for(int i = 0; i < length; i++ ) {
-            System.out.printf("%d : %d -> %d (w : %.2f, %.2f)\n", i, list[i].getVal(), list[i].getNext().getVal(), (double)(list[i].getWeight()), (double)(list[i].getNext().getWeight()));
-        }
-    }
-
-    /**
+     * TP1
      * Affiche la liste d'adjacence
-     * @param list
-     * @param length
+     * @param adjlist
+     * @param adjlistW
      */
-    public static void printAdjList(Node4A[] list) {
-        Node4A current = list[0];
-        int i = 0;
-        while(current != null) {
-            Node4A next = current.getNext();
-            while (next != null) {
-                System.out.printf("%d : %d -> %d\n", i, current.getVal(), next.getVal());
-                next = next.getNext();
+    public static void printAdjList(Node4A[] adjlist, WeightedNode4A[] adjlistW) {
+        if(adjlist != null) {
+            System.out.print("Liste non pondérée");
+            for (int i = 0; i < adjlist.length; i++) {
+                Node4A current = adjlist[i]; //noeud
+                System.out.printf("\n%d :", i+1);
+                Node4A succ = current; //successeurs du noeud
+                while (succ != null) {
+                    System.out.printf(" %d", succ.getVal()+1);
+                    succ = succ.getNext();
+                }
             }
-            current = current.getNext();
-            i++;
+            System.out.println();
+        }
+        if(adjlistW != null) {
+            System.out.print("Liste pondérée");
+            for (int i = 0; i < adjlistW.length; i++) {
+                WeightedNode4A current = adjlistW[i]; //noeud
+                System.out.printf("\n%d :", i + 1);
+                WeightedNode4A succ = current; //successeurs du noeud
+                while (succ != null) {
+                    System.out.printf(" %d (w=%.2f)", succ.getVal() + 1, (double)(succ.getWeight()));
+                    succ = succ.getNext();
+                }
+            }
         }
     }
 }

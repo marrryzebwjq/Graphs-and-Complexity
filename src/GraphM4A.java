@@ -80,6 +80,7 @@ public class GraphM4A {
     //method to be applied only when type=1
 
     /**
+     * TP1 Exercise 1
      * @param outMatrix display the result as an adjacency matrix (or as an adjacency list)
      */
     public void printTransposed(boolean outMatrix) {
@@ -90,6 +91,7 @@ public class GraphM4A {
     }
 
     /**
+     * TP1 Exercise 1
      * Compute the transposed graph, represented by an adjacency matrix
      */
     private float[][] transposedMM() {
@@ -109,10 +111,14 @@ public class GraphM4A {
     }
 
 
+
+
+    //TP1
     public int getType() {
         return this.type;
     }
 
+    //TP1
     public float[][] getAdjmat() {
         return adjmat;
     }

@@ -40,12 +40,14 @@ public class GraphL4A {
             String[] line = sc.nextLine().split(" : ");
             int i = Integer.parseInt(line[0]); //the vertex "source"
             if (weighted == 0) {
-                String[] successors = line[1].split(", ");
-                System.out.println(i + " " + successors.length);
-                for (int h = 0; h < successors.length; h++) {
-                    Node4A node = new Node4A(Integer.parseInt(successors[h]) - 1, null);
-                    node.setNext(adjlist[i - 1]);
-                    adjlist[i - 1] = node;
+                if ((line.length > 1) && (line[1].charAt(0) != ' ')) {
+                    String[] successors = line[1].split(", ");
+                    System.out.println(i + " " + successors.length);
+                    for (int h = 0; h < successors.length; h++) {
+                        Node4A node = new Node4A(Integer.parseInt(successors[h]) - 1, null);
+                        node.setNext(adjlist[i - 1]);
+                        adjlist[i - 1] = node;
+                    }
                 }
             } else {
                 line = line[1].split(" // ");

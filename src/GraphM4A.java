@@ -32,10 +32,14 @@ public class GraphM4A {
             String[] line = sc.nextLine().split(" : ");
             int i = Integer.parseInt(line[0]); //the vertex "source"
             if (weighted == 0) {
-                String[] successors = line[1].split(", ");
-                System.out.println(i + " " + successors.length);
-                for (int h = 0; h < successors.length; h++)
-                    this.adjmat[i - 1][Integer.parseInt(successors[h]) - 1] = 1;
+                if ((line.length > 1) && (line[1].charAt(0) != ' ')) {
+                    String[] successors = line[1].split(", ");
+                    System.out.println(i + " " + successors.length);
+                    for (int h = 0; h < successors.length; h++) {
+                        System.out.println(Integer.parseInt(successors[h]));
+                        this.adjmat[i - 1][Integer.parseInt(successors[h]) - 1] = 1;
+                    }
+                }
             } else {
                 line = line[1].split(" // ");
                 if ((line.length == 2) && (line[1].charAt(0) != ' ')) {// if there really are some successors, then we must have something different from " " after "// "

@@ -13,7 +13,7 @@ public class Main4A {
             File file3 = new File("resources/ExempleTP1-smallgraph-directed.txt");
             File file4 = new File("resources/ExempleTP1-smallgraph-directedW.txt");
 
-            file = file3;
+            file = file4;
 
             //If we choose the representation by adjacency matrix ------------------------------------------------------
             Scanner sc = new Scanner(file);
@@ -61,7 +61,7 @@ public class Main4A {
                 Tools4A.printArray(degree);
 
                 /* TODO
-                System.out.println("Exercice 2 :");
+                System.out.println("TP1 Exercice 2 :");
                 System.out.println("Teste s'il y a un chemin dans le graphe pour la séquence de sommets donnée");
                 graphL.hasPath([1,2,3,4,5,6,4,2,1,3]);
                  */
@@ -72,7 +72,7 @@ public class Main4A {
                 Tools4A.printArray(degree);
 
                 /* TODO
-                System.out.println("Exercice 2 :");
+                System.out.println("TP1 Exercice 2 :");
                 System.out.println("Teste s'il y a un chemin dans le graphe pour la séquence de sommets donnée");
                 graphL.hasPath([1,2,3,4,5,6,4,2,1,3]);
                  */
@@ -86,13 +86,13 @@ public class Main4A {
                 System.out.println("(List) Outdegrees for vertices from 1 to " + indegree.length + " for the given digraph");
                 Tools4A.printArray(outdegree);
 
+                System.out.println("TP1 Exercice 1");
                 /* TODO
-                System.out.println("Exercice 1");
                 System.out.println("Liste d'adjacence de la transposée :");
                 graphL.printTransposed(true);
+                 */
                 System.out.println("Matrice d'adjacence de la transposée :");
                 graphL.printTransposed(false);
-                 */
             }
             else if (graphL.getType() == 1 && graphL.getWeighted() == 1) { //directed and weighted
                 TwoArrays4A pair = graphL.degreesW();
@@ -103,13 +103,13 @@ public class Main4A {
                 System.out.println("(List)Outdegrees for vertices from 1 to " + indegree.length + " for the given digraph");
                 Tools4A.printArray(outdegree);
 
+                System.out.println("TP1 Exercice 1");
                 /* TODO
-                System.out.println("Exercice 1");
                 System.out.println("Liste d'adjacence de la transposée :");
                 graphL.printTransposed(true);
+                 */
                 System.out.println("Matrice d'adjacence de la transposée :");
                 graphL.printTransposed(false);
-                 */
             }
             sc.close();
         } catch (Exception e) {

@@ -135,6 +135,69 @@ public class GraphL4A {
     }
 
 
+    //method to be applied only when type=1
+
+    /**
+     * TP1 Exercise 1
+     *
+     * @param outList display the result as an adjacency list (or as an adjacency matrix)
+     */
+    public void printTransposed(boolean outList) {
+        if (outList)
+            Tools4A.printAdjList(transposedLL(), transposedLLW());
+        else
+            Tools4A.printMatrix(transposedLM());
+    }
+
+    /**
+     * TP1 Exercise 1
+     * Compute the transposed graph, represented by an unweighted adjacency list
+     */
+    private Node4A[] transposedLL() { //TODO
+        if (this.weighted == 1) return null;
+
+        return null;
+    }
+
+    /**
+     * TP1 Exercise 1
+     * Compute the transposed graph, represented by a weighted adjacency list
+     */
+    private WeightedNode4A[] transposedLLW() { //TODO
+        if (this.weighted == 0) return null;
+
+        return null;
+    }
+
+    /**
+     * TP1 Exercise 1
+     * Compute the transposed graph, represented by an adjacency matrix
+     */
+    private float[][] transposedLM() {
+        if (weighted == 0) {
+            float[][] transM = new float[this.adjlist.length][this.adjlist.length];
+            for (int i = 0; i < adjlist.length; i++) {
+                Node4A node = adjlist[i];
+                while (node != null) {
+                    transM[node.getVal()][i] = 1;
+                    node = node.getNext();
+                }
+            }
+            return transM;
+        } else {
+            float[][] transM = new float[this.adjlistW.length][this.adjlistW.length];
+            for (int i = 0; i < adjlistW.length; i++) {
+                WeightedNode4A node = adjlistW[i];
+                while (node != null) {
+                    transM[node.getVal()][i] = node.getWeight();
+                    node = node.getNext();
+                }
+            }
+            return transM;
+        }
+    }
+
+
     public int getType() {
         return this.type;
     }

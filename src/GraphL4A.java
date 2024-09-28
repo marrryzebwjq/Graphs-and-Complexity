@@ -95,6 +95,17 @@ public class GraphL4A {
         return (tmp);
     }
 
+    /**
+     * TP1 Exercise 2
+     * @param sequence of vertices
+     * @return whether there is a path
+     */
+    public boolean hasPath(int[] sequence) {
+        return false;
+    }
+
+
+    //method to be applied only when type=1 ----------------------------------------------------------------------------
 
     //method to be applied only when type=1 and weighted=0
     public TwoArrays4A degrees() {

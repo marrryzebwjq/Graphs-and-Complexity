@@ -45,7 +45,7 @@ public class Main4A {
                 System.out.println("Matrice d'adjacence de la transposée :");
                 graphM.printTransposed(true);
                 System.out.println("Liste d'adjacence de la transposée :");
-                graphM.printTransposed(false); //TODO à corriger : transpo Liste-Matrice
+                graphM.printTransposed(false);
             }
 
 

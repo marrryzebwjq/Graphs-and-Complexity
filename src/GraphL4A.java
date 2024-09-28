@@ -63,6 +63,7 @@ public class GraphL4A {
         }
     }
 
+    //method to be applied only when type=0 ----------------------------------------------------------------------------
 
     //method to be applied only when type=0 and weighted=0
     public int[] degree() {
@@ -133,8 +134,6 @@ public class GraphL4A {
         return (new TwoArrays4A(tmp1, tmp2));
     }
 
-
-    //method to be applied only when type=1
 
     /**
      * TP1 Exercise 1
@@ -223,6 +222,7 @@ public class GraphL4A {
     }
 
 
+
     public int getType() {
         return this.type;
     }
@@ -239,11 +239,6 @@ public class GraphL4A {
     //TP1
     public Node4A[] getAdjlist() {
         return adjlist;
-    }
-
-    //TP1
-    public int getN() {
-        return n;
     }
 }
 		

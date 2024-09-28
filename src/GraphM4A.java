@@ -50,7 +50,8 @@ public class GraphM4A {
         }
     }
 
-    //method to be applied only when type=0
+    //method to be applied only when type=0 ----------------------------------------------------------------------------
+
     public int[] degree() {
         int[] tmp = new int[this.n];
         for (int i = 0; i < this.n; i++)
@@ -62,7 +63,18 @@ public class GraphM4A {
         return tmp;
     }
 
-    //method to be applied only when type=1
+    /**
+     * TP1 Exercise 2
+     * @param sequence of vertices
+     * @return whether there is a path
+     */
+    public boolean hasPath(int[] sequence) {
+        return false;
+    }
+
+
+    //method to be applied only when type=1 ----------------------------------------------------------------------------
+
     public TwoArrays4A degrees() {
         int[] tmp1 = new int[this.n]; //indegrees
         int[] tmp2 = new int[this.n]; //outdegrees
@@ -78,8 +90,6 @@ public class GraphM4A {
                 }
         return (new TwoArrays4A(tmp1, tmp2));
     }
-
-    //method to be applied only when type=1
 
     /**
      * TP1 Exercise 1
@@ -105,6 +115,7 @@ public class GraphM4A {
         }
         return trans;
     }
+
     /**
      * TP1 Exercise 1
      * Compute the transposed graph, represented by an unweighted adjacency list
@@ -173,8 +184,6 @@ public class GraphM4A {
 
 
 
-
-    //TP1
     public int getType() {
         return this.type;
     }

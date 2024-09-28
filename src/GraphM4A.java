@@ -69,7 +69,11 @@ public class GraphM4A {
      * @return whether there is a path
      */
     public boolean hasPath(int[] sequence) {
-        return false;
+        for(int i = 0; i < sequence.length-1; i++) {
+            if(adjmat[sequence[i]-1][sequence[i+1]-1] == 0) //if it's not the successor
+                return false;
+        }
+        return true;
     }
 
 

@@ -13,7 +13,10 @@ public class Main4A {
             File file3 = new File("resources/ExempleTP1-smallgraph-directed.txt");
             File file4 = new File("resources/ExempleTP1-smallgraph-directedW.txt");
 
-            file = file4;
+            file = file1;
+
+            int[] v1 = {1,2,3,4,5,4,2,1,3}; //exo 2
+            int[] v2 = {1,2,3,5};
 
             System.out.println("If we choose the representation by adjacency matrix ---------------------------------");
             Scanner sc = new Scanner(file);
@@ -27,12 +30,12 @@ public class Main4A {
                 System.out.println("(Matrix) Degrees for vertices from 1 to " + degree.length + " for the given undirected graph");
                 Tools4A.printArray(degree);
 
-                /* TODO
-                 */
                 System.out.println("TP1 Exercice 2 :");
                 System.out.println("Teste s'il y a un chemin dans le graphe pour la séquence de sommets donnée");
-                int[] v = {1,2,3,4,5,6,4,2,1,3};
-                graphM.hasPath(v);
+                Tools4A.printArray(v1);
+                System.out.println(graphM.hasPath(v1));
+                Tools4A.printArray(v2);
+                System.out.println(graphM.hasPath(v2));
 
             } else { //directed
                 TwoArrays4A pair = graphM.degrees();

@@ -102,7 +102,7 @@ public class Main4A {
                 Tools4A.printArray(outdegree);
 
                 System.out.println("TP1 Exercice 1");
-                System.out.println("Liste d'adjacence de la transposée wwwwwwwwwwwwwwwwwwwwwwwwwwwww:");
+                System.out.println("Liste d'adjacence de la transposée :");
                 graphL.printTransposed(true);
                 System.out.println("Matrice d'adjacence de la transposée :");
                 graphL.printTransposed(false);

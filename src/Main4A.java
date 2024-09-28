@@ -45,7 +45,7 @@ public class Main4A {
                 System.out.println("Matrice d'adjacence de la transposée :");
                 graphM.printTransposed(true);
                 System.out.println("Liste d'adjacence de la transposée :");
-                graphM.printTransposed(false);
+                graphM.printTransposed(false); //TODO à corriger : transpo Liste-Matrice
             }
 
             // If we choose the representation by adjacency lists ------------------------------------------------------
@@ -87,10 +87,8 @@ public class Main4A {
                 Tools4A.printArray(outdegree);
 
                 System.out.println("TP1 Exercice 1");
-                /* TODO
                 System.out.println("Liste d'adjacence de la transposée :");
                 graphL.printTransposed(true);
-                 */
                 System.out.println("Matrice d'adjacence de la transposée :");
                 graphL.printTransposed(false);
             }
@@ -104,10 +102,8 @@ public class Main4A {
                 Tools4A.printArray(outdegree);
 
                 System.out.println("TP1 Exercice 1");
-                /* TODO
-                System.out.println("Liste d'adjacence de la transposée :");
+                System.out.println("Liste d'adjacence de la transposée wwwwwwwwwwwwwwwwwwwwwwwwwwwww:");
                 graphL.printTransposed(true);
-                 */
                 System.out.println("Matrice d'adjacence de la transposée :");
                 graphL.printTransposed(false);
             }

@@ -113,11 +113,10 @@ public class GraphM4A {
         if (this.weighted == 1) return null;
 
         Node4A[] adjlist = new Node4A[this.n];
-        int[] successeurs = new int[this.n]; //tmp
-        int k;
         //liste des successeurs du noeud j
         for (int j = 0; j < this.n; j++) {
-            k = 0;
+            int[] successeurs = new int[this.n];
+            int k = 0;
             for (int i = 0; i < this.n; i++) {
                 if (this.adjmat[i][j] != 0) {
                     successeurs[k] = i;
@@ -146,12 +145,11 @@ public class GraphM4A {
         if (this.weighted == 0) return null;
 
         WeightedNode4A[] adjlistW = new WeightedNode4A[this.n];
-        int[] successeurs = new int[this.n]; //tmp
-        float[] poids = new float[this.n]; //tmp
-        int k;
         //liste des successeurs du noeud j
         for (int j = 0; j < this.n; j++) {
-            k = 0;
+            int[] successeurs = new int[this.n];
+            float[] poids = new float[this.n];
+            int k = 0;
             for (int i = 0; i < this.n; i++) {
                 if (this.adjmat[i][j] != 0) {
                     successeurs[k] = i;

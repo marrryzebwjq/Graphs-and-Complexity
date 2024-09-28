@@ -169,7 +169,6 @@ public class GraphL4A {
             }
         }
         return trans;
-
     }
 
     /**
@@ -193,7 +192,6 @@ public class GraphL4A {
             }
         }
         return trans;
-
     }
 
     /**

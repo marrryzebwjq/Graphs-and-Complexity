@@ -152,25 +152,24 @@ public class GraphL4A {
      * TP1 Exercise 1
      * Compute the transposed graph, represented by an unweighted adjacency list
      */
-    private Node4A[] transposedLL() { //TODO
-        if (this.weighted == 1)
-            return null;
-        else { //unweighted
-            Node4A[] trans = new Node4A[this.n];
-            for (int i = 0; i < this.n; i++) {
-                Node4A p = this.adjlist[i];
-                while (p != null) {
-                    if(trans[p.getVal()] == null) // si on a pas encore mis de noeud
-                        trans[p.getVal()] = new Node4A(i,null);
-                    else {                      // s'il y a déjà des noeuds
-                        Node4A next = new Node4A(trans[p.getVal()].getVal(), trans[p.getVal()].getNext());
-                        trans[p.getVal()] = new Node4A(i, next);
-                    }
-                    p = p.getNext();
+    private Node4A[] transposedLL() {
+        if (this.weighted == 1) return null;
+
+        Node4A[] trans = new Node4A[this.n];
+        for (int i = 0; i < this.n; i++) {
+            Node4A p = this.adjlist[i];
+            while (p != null) {
+                if (trans[p.getVal()] == null) // si on a pas encore mis de noeud
+                    trans[p.getVal()] = new Node4A(i, null);
+                else {                      // s'il y a déjà des noeuds
+                    Node4A next = new Node4A(trans[p.getVal()].getVal(), trans[p.getVal()].getNext());
+                    trans[p.getVal()] = new Node4A(i, next);
                 }
+                p = p.getNext();
             }
-            return trans;
         }
+        return trans;
+
     }
 
     /**
@@ -178,24 +177,23 @@ public class GraphL4A {
      * Compute the transposed graph, represented by a weighted adjacency list
      */
     private WeightedNode4A[] transposedLLW() {
-        if (this.weighted == 0)
-            return null;
-        else { //weighted
-            WeightedNode4A[] trans = new WeightedNode4A[this.n];
-            for (int i = 0; i < this.n; i++) {
-                WeightedNode4A p = this.adjlistW[i];
-                while (p != null) {
-                    if (trans[p.getVal()] == null) // si on a pas encore mis de noeud
-                        trans[p.getVal()] = new WeightedNode4A(i, null, p.getWeight());
-                    else {                      // s'il y a déjà des noeuds
-                        WeightedNode4A next = new WeightedNode4A(trans[p.getVal()].getVal(), trans[p.getVal()].getNext(), trans[p.getVal()].getWeight());
-                        trans[p.getVal()] = new WeightedNode4A(i, next, p.getWeight());
-                    }
-                    p = p.getNext();
+        if (this.weighted == 0) return null;
+
+        WeightedNode4A[] trans = new WeightedNode4A[this.n];
+        for (int i = 0; i < this.n; i++) {
+            WeightedNode4A p = this.adjlistW[i];
+            while (p != null) {
+                if (trans[p.getVal()] == null) // si on a pas encore mis de noeud
+                    trans[p.getVal()] = new WeightedNode4A(i, null, p.getWeight());
+                else {                      // s'il y a déjà des noeuds
+                    WeightedNode4A next = new WeightedNode4A(trans[p.getVal()].getVal(), trans[p.getVal()].getNext(), trans[p.getVal()].getWeight());
+                    trans[p.getVal()] = new WeightedNode4A(i, next, p.getWeight());
                 }
+                p = p.getNext();
             }
-            return trans;
         }
+        return trans;
+
     }
 
     /**

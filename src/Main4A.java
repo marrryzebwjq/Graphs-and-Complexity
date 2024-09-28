@@ -15,7 +15,7 @@ public class Main4A {
 
             file = file4;
 
-            //If we choose the representation by adjacency matrix ------------------------------------------------------
+            System.out.println("If we choose the representation by adjacency matrix ---------------------------------");
             Scanner sc = new Scanner(file);
             GraphM4A graphM = new GraphM4A(sc);
 
@@ -48,7 +48,8 @@ public class Main4A {
                 graphM.printTransposed(false); //TODO à corriger : transpo Liste-Matrice
             }
 
-            // If we choose the representation by adjacency lists ------------------------------------------------------
+
+            System.out.println("If we choose the representation by adjacency lists -----------------------------------");
             sc = new Scanner(file);
             GraphL4A graphL = new GraphL4A(sc);
 

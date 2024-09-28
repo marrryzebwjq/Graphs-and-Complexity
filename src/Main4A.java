@@ -70,8 +70,10 @@ public class Main4A {
                  */
                 System.out.println("TP1 Exercice 2 :");
                 System.out.println("Teste s'il y a un chemin dans le graphe pour la séquence de sommets donnée");
-                int[] v = {1,2,3,4,5,6,4,2,1,3};
-                graphL.hasPath(v);
+                Tools4A.printArray(v1);
+                System.out.println(graphL.hasPath(v1));
+                Tools4A.printArray(v2);
+                System.out.println(graphL.hasPath(v2));
             }
             else if (graphL.getType() == 0 && graphL.getWeighted() == 1) { //undirected and weighted
                 int[] degree = graphL.degreeW();
@@ -82,8 +84,10 @@ public class Main4A {
                  */
                 System.out.println("TP1 Exercice 2 :");
                 System.out.println("Teste s'il y a un chemin dans le graphe pour la séquence de sommets donnée");
-                int[] v = {1,2,3,4,5,6,4,2,1,3};
-                graphL.hasPath(v);
+                Tools4A.printArray(v1);
+                System.out.println(graphL.hasPath(v1));
+                Tools4A.printArray(v2);
+                System.out.println(graphL.hasPath(v2));
             }
             else if (graphL.getType() == 1 && graphL.getWeighted() == 0) { //directed and unweighted
                 TwoArrays4A pair = graphL.degrees();

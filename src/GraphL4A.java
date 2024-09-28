@@ -101,7 +101,27 @@ public class GraphL4A {
      * @return whether there is a path
      */
     public boolean hasPath(int[] sequence) {
-        return false;
+        if(this.weighted == 0) { //unweighted
+            for(int i = 0; i < sequence.length-1; i++) {
+                Node4A p = adjlist[sequence[i]-1];
+                while(p.getVal() != sequence[i+1]-1) { //si le successeur n'est pas celui recherché, alors on continue de chercher
+                    if(p.getNext() == null) //si on n'a pas trouvé mais qu'il n'y a plus de successeur
+                        return false;
+                    p = p.getNext();
+                }
+            }
+        } else {                 //weighted
+            for(int i = 0; i < sequence.length-1; i++) {
+                WeightedNode4A p = adjlistW[sequence[i]-1];
+                while(p.getVal() != sequence[i+1]-1) { //si le successeur n'est pas celui recherché, alors on continue de chercher
+                    if(p.getNext() == null) //si on n'a pas trouvé mais qu'il n'y a plus de successeur
+                        return false;
+                    p = p.getNext();
+                }
+            }
+        }
+        return true;
+
     }
 
 

@@ -252,6 +252,22 @@ public class GraphL4A {
         }
     }
 
+    int[] debut = new int[this.n];
+    int[] fin = new int[this.n];
+    int nb = 0;
+    public Node4A[] DFS_Num(Node4A s) {
+    	nb = nb + 1;
+    	debut[s.getVal()] = nb;
+    	Node4A next = s;
+    	for (Node4A node = adjlist[s.getVal()]; node != null; node.getNext()){
+    		if (debut[next.getVal()] == 0) {
+    			//DFS
+    		}
+
+    	}
+    	return null;
+    }
+    
 
 
     public int getType() {

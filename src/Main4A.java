@@ -7,6 +7,7 @@ public class Main4A {
     public static void main(String args[]) {
 
         try {
+            //File file= new File(args[0]);
             File file = new File("resources/ExempleTP1.txt"); // remplacement de arg[0] par le path (comme ça pas besoin de le mettre dans les config du Run)
             File file1 = new File("resources/ExempleTP1-smallgraph-undirected.txt");
             File file2 = new File("resources/ExempleTP1-smallgraph-undirectedW.txt");
@@ -66,8 +67,6 @@ public class Main4A {
                 System.out.println("(List) Degrees for vertices from 1 to " + degree.length + " for the given undirected graph");
                 Tools4A.printArray(degree);
 
-                /* TODO
-                 */
                 System.out.println("TP1 Exercice 2 :");
                 System.out.println("Teste s'il y a un chemin dans le graphe pour la séquence de sommets donnée");
                 Tools4A.printArray(v1);
@@ -80,8 +79,6 @@ public class Main4A {
                 System.out.println("(List) Degrees for vertices from 1 to " + degree.length + " for the given undirected graph");
                 Tools4A.printArray(degree);
 
-                /* TODO
-                 */
                 System.out.println("TP1 Exercice 2 :");
                 System.out.println("Teste s'il y a un chemin dans le graphe pour la séquence de sommets donnée");
                 Tools4A.printArray(v1);

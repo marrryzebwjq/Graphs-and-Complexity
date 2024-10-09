@@ -252,20 +252,44 @@ public class GraphL4A {
         }
     }
 
-    int[] debut = new int[this.n];
-    int[] fin = new int[this.n];
-    int nb = 0;
-    public Node4A[] DFS_Num(Node4A s) {
-    	nb = nb + 1;
-    	debut[s.getVal()] = nb;
-    	Node4A next = s;
-    	for (Node4A node = adjlist[s.getVal()]; node != null; node.getNext()){
-    		if (debut[next.getVal()] == 0) {
-    			//DFS
-    		}
+    private int[] debut;
+    private int[] fin;
+    private int nb;
 
+    /**
+     * TP2 Exercise 1
+     * @param s the vertex root of the tree provided by the DFSnum algorithm
+     */
+    public void DFS_Num(Node4A s) {
+        //récursivité sur chaque successeur de s
+        for (Node4A node = s; node != null; node = node.getNext()){
+    		if (this.debut[node.getVal()] == 0) {
+                this.nb += 1;
+                this.debut[node.getVal()] = this.nb;
+                System.out.printf("noeud %d debut %d\n",node.getVal()+1,this.nb);
+    			DFS_Num(node);
+    		}
     	}
-    	return null;
+        this.nb += 1;
+        this.fin[s.getVal()] = this.nb;
+        System.out.printf("noeud %d fin %d\n",s.getVal()+1,this.nb);
+    }
+
+    /**
+     * TP2 Exercise 2
+     * Perform a graph search using the DFSnum algorithm
+     */
+    public void search() {
+        this.debut = new int[this.n];
+        this.fin = new int[this.n];
+        for (int i=0; i<this.n; i++) { //parcours de tous les noeuds (juste les noeuds, pas leurs successeurs)
+            if (this.debut[i] == 0) {
+                this.nb = 1;
+                this.debut[i] = this.nb;
+                System.out.printf("noeud %d debut %d\n",i+1,this.nb);
+                DFS_Num(adjlist[i]);
+            }
+        }
     }
     
 

@@ -254,7 +254,7 @@ public class GraphL4A {
 
     private int[] debut;
     private int[] fin;
-    private int nb;
+    private int nb = 0;
 
     /**
      * TP2 Exercise 1
@@ -267,7 +267,7 @@ public class GraphL4A {
                 this.nb += 1;
                 this.debut[node.getVal()] = this.nb;
                 System.out.printf("noeud %d debut %d\n",node.getVal()+1,this.nb);
-    			DFS_Num(node);
+    			DFS_Num(adjlist[node.getVal()]);
     		}
     	}
         this.nb += 1;
@@ -284,7 +284,8 @@ public class GraphL4A {
         this.fin = new int[this.n];
         for (int i=0; i<this.n; i++) { //parcours de tous les noeuds (juste les noeuds, pas leurs successeurs)
             if (this.debut[i] == 0) {
-                this.nb = 1;
+                System.out.println("--- sous-graphe ---");
+                this.nb += 1;
                 this.debut[i] = this.nb;
                 System.out.printf("noeud %d debut %d\n",i+1,this.nb);
                 DFS_Num(adjlist[i]);

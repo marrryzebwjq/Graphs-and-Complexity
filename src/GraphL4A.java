@@ -260,7 +260,7 @@ public class GraphL4A {
      * TP2 Exercise 1
      * @param s the vertex root of the tree provided by the DFSnum algorithm
      */
-    public void DFS_Num(Node4A s, int val) {
+    private void DFS_Num(Node4A s, int val) {
         //récursivité sur chaque successeur de s
         for (Node4A node = s; node != null; node = node.getNext()){
     		if (this.debut[node.getVal()] == 0) {

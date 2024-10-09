@@ -260,19 +260,19 @@ public class GraphL4A {
      * TP2 Exercise 1
      * @param s the vertex root of the tree provided by the DFSnum algorithm
      */
-    public void DFS_Num(Node4A s) {
+    public void DFS_Num(Node4A s, int val) {
         //récursivité sur chaque successeur de s
         for (Node4A node = s; node != null; node = node.getNext()){
     		if (this.debut[node.getVal()] == 0) {
                 this.nb += 1;
                 this.debut[node.getVal()] = this.nb;
                 System.out.printf("noeud %d debut %d\n",node.getVal()+1,this.nb);
-    			DFS_Num(adjlist[node.getVal()]);
+    			DFS_Num(adjlist[node.getVal()], node.getVal());
     		}
     	}
         this.nb += 1;
-        this.fin[s.getVal()] = this.nb;
-        System.out.printf("noeud %d fin %d\n",s.getVal()+1,this.nb);
+        this.fin[val] = this.nb;
+        System.out.printf("noeud %d fin %d\n",val+1,this.nb);
     }
 
     /**
@@ -288,7 +288,7 @@ public class GraphL4A {
                 this.nb += 1;
                 this.debut[i] = this.nb;
                 System.out.printf("noeud %d debut %d\n",i+1,this.nb);
-                DFS_Num(adjlist[i]);
+                DFS_Num(adjlist[i], i);
             }
         }
     }

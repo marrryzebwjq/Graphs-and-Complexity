@@ -299,6 +299,40 @@ public class GraphL4A {
         this.fin[sval] = this.nb;
         this.cycle.remove((Integer) sval);
     }
+    // exactement la même fonction qu'au dessuss
+    private void DFS_NumW(WeightedNode4A s, int sval) {
+        //récursivité sur chaque successeur de s
+        for (WeightedNode4A next = s; next != null; next = next.getNext()){
+    		if (this.debut[next.getVal()] == 0) {
+                //tree arc
+                this.nb += 1;
+                this.debut[next.getVal()] = this.nb;
+                this.arcType[sval][next.getVal()] = 1;
+                this.cycle.add(next.getVal());
+    			DFS_NumW(adjlistW[next.getVal()], next.getVal());
+    		}
+            else {
+                //not tree arc
+                if (this.fin[next.getVal()] == 0) {
+                    if (this.debut[sval] < this.debut[next.getVal()])
+                        this.arcType[sval][next.getVal()] = 2; //forward (d[s]<d[n]) arc
+                    else {
+                        this.arcType[sval][next.getVal()] = 3; //backward (d[s]>d[n]) arc (=cycle)
+                        //tous les noeuds entre s et n dans this.cycle sont dans le cycle
+                        System.out.println("Présence d'un cycle :");
+                        for(int i=this.cycle.indexOf(next.getVal()); i<this.cycle.indexOf(sval)+1; i++)
+                            System.out.print(this.cycle.get(i) + 1 + " ");
+                        System.out.println();
+                    }
+                }
+                else
+                    this.arcType[sval][next.getVal()] = 4; //cross arc
+            }
+    	}
+        this.nb += 1;
+        this.fin[sval] = this.nb;
+        this.cycle.remove((Integer) sval);
+    }
 
     private int nb = 0; //pour remplir d[] et f[]
     /**
@@ -315,7 +349,10 @@ public class GraphL4A {
                 this.nb += 1;
                 this.debut[i] = this.nb;
                 this.cycle.add(i);
-                DFS_Num(adjlist[i], i);
+                if (this.weighted == 0)
+                    DFS_Num(adjlist[i], i);
+                else
+                    DFS_NumW(adjlistW[i], i);
             }
         }
     }

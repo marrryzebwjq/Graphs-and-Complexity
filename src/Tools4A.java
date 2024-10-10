@@ -8,10 +8,23 @@ public class Tools4A {
         System.out.println();
     }
 
+    /**
+     * TP2
+     * Affiche la matrice d'entiers
+     * @param mat
+     */
+    public static void printMatrix(int[][] mat) {
+        for (int i = 0; i < mat.length; i++) {
+            for (int j = 0; j < mat[i].length; j++) {
+                System.out.print(mat[i][j] + "   ");
+            }
+            System.out.println();
+        }
+    }
 
     /**
      * TP1
-     * Affiche la matrice
+     * Affiche la matrice de float
      * @param mat
      */
     public static void printMatrix(float[][] mat) {

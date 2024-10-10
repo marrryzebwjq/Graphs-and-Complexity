@@ -1,3 +1,4 @@
+import javax.tools.Tool;
 import java.util.Scanner;
 
 public class GraphL4A {
@@ -252,6 +253,7 @@ public class GraphL4A {
         }
     }
 
+    private int[][] arcType; // 1:tree arc, 2:forward arc, 3:backward arc, 4:cross arc
     private int[] debut;
     private int[] fin;
     private int nb = 0;
@@ -259,20 +261,37 @@ public class GraphL4A {
     /**
      * TP2 Exercise 1
      * @param s the vertex root of the tree provided by the DFSnum algorithm
+     * @param sval the value of the node s (on n'y a pas vraiment accès si on le garde pas)
      */
-    private void DFS_Num(Node4A s, int val) {
+    private void DFS_Num(Node4A s, int sval) {
         //récursivité sur chaque successeur de s
-        for (Node4A node = s; node != null; node = node.getNext()){
-    		if (this.debut[node.getVal()] == 0) {
+        for (Node4A next = s; next != null; next = next.getNext()){
+    		if (this.debut[next.getVal()] == 0) {
+                //tree arc
+                this.arcType[sval][next.getVal()] = 1;
                 this.nb += 1;
-                this.debut[node.getVal()] = this.nb;
-                System.out.printf("noeud %d debut %d\n",node.getVal()+1,this.nb);
-    			DFS_Num(adjlist[node.getVal()], node.getVal());
+                this.debut[next.getVal()] = this.nb;
+                System.out.printf("noeud %d debut %d\n",next.getVal()+1,this.nb);
+    			DFS_Num(adjlist[next.getVal()], next.getVal());
     		}
+            else {
+                //not tree arc
+                if (this.fin[next.getVal()] == 0) {
+                    //forward (d[s]<d[n]) or backward (d[s]>d[n]) arc
+                    if (this.debut[sval] < this.debut[next.getVal()])
+                        this.arcType[sval][next.getVal()] = 2;
+                    else
+                        this.arcType[sval][next.getVal()] = 3;
+                }
+                else {
+                    //cross arc
+                    this.arcType[sval][next.getVal()] = 4;
+                }
+            }
     	}
         this.nb += 1;
-        this.fin[val] = this.nb;
-        System.out.printf("noeud %d fin %d\n",val+1,this.nb);
+        this.fin[sval] = this.nb;
+        System.out.printf("noeud %d fin %d\n",sval+1,this.nb);
     }
 
     /**
@@ -282,15 +301,18 @@ public class GraphL4A {
     public void search() {
         this.debut = new int[this.n];
         this.fin = new int[this.n];
+        this.arcType = new int[this.n][this.n];
         for (int i=0; i<this.n; i++) { //parcours de tous les noeuds (juste les noeuds, pas leurs successeurs)
             if (this.debut[i] == 0) {
-                System.out.println("--- sous-graphe ---");
+                System.out.println("--- ---");
                 this.nb += 1;
                 this.debut[i] = this.nb;
                 System.out.printf("noeud %d debut %d\n",i+1,this.nb);
                 DFS_Num(adjlist[i], i);
             }
         }
+        System.out.println("Matrice qui représente les types des arcs.\n(1:tree arc, 2:forward arc, 3:backward arc, 4:cross arc)");
+        Tools4A.printMatrix(this.arcType);
     }
     
 

@@ -9,12 +9,13 @@ public class Main4A {
         try {
             //File file= new File(args[0]);
             File file = new File("resources/ExempleTP1.txt"); // remplacement de arg[0] par le path (comme ça pas besoin de le mettre dans les config du Run)
+            File file0 = new File("resources/ExempleTP2.txt");
             File file1 = new File("resources/ExempleTP1-smallgraph-undirected.txt");
             File file2 = new File("resources/ExempleTP1-smallgraph-undirectedW.txt");
             File file3 = new File("resources/ExempleTP1-smallgraph-directed.txt");
             File file4 = new File("resources/ExempleTP1-smallgraph-directedW.txt");
 
-            file = file1;
+            file = file0;
 
             int[] v1 = {1,2,3,4,5,4,2,1,3}; //exo 2
             int[] v2 = {1,2,3,5};
@@ -74,15 +75,13 @@ public class Main4A {
                 Tools4A.printArray(v2);
                 System.out.println(graphL.hasPath(v2));
 
-                /* TODO
-                 */
-                System.out.println("TP2 Exercice 1");
-                System.out.println("DFSNum(s), and type of each arcs.");
+                /* TODO */
+                System.out.println("TP2 Exercice 1+2+3");
+                System.out.println("DFSNum(s) + cycle search.");
                 graphL.search();
-                System.out.println("TP2 Exercice 2");
-                System.out.println("Does this graph contains a cycle ?");
-                System.out.println("TP2 Exercice 3");
-                System.out.println("Cycles of the graph :");
+                Tools4A.printDebutFin(graphL.getDebut(), graphL.getFin());
+                //System.out.println("Matrice qui représente les types des arcs:\n(1=tree arc, 2=forward arc, 3=backward arc, 4=cross arc)");
+                //Tools4A.printMatrix(graphL.getArcType());
             }
             else if (graphL.getType() == 0 && graphL.getWeighted() == 1) { //undirected and weighted
                 int[] degree = graphL.degreeW();
@@ -96,15 +95,13 @@ public class Main4A {
                 Tools4A.printArray(v2);
                 System.out.println(graphL.hasPath(v2));
 
-                /* TODO
-                 */
-                System.out.println("TP2 Exercice 1");
-                System.out.println("DFSNum(s), and type of each arcs.");
+                /* TODO */
+                System.out.println("TP2 Exercice 1+2+3");
+                System.out.println("DFSNum(s) + cycle search.");
                 graphL.search();
-                System.out.println("TP2 Exercice 2");
-                System.out.println("Does this graph contains a cycle ?");
-                System.out.println("TP2 Exercice 3");
-                System.out.println("Cycles of the graph :");
+                Tools4A.printDebutFin(graphL.getDebut(), graphL.getFin());
+                //System.out.println("Matrice qui représente les types des arcs:\n(1=tree arc, 2=forward arc, 3=backward arc, 4=cross arc)");
+                //Tools4A.printMatrix(graphL.getArcType());
             }
             else if (graphL.getType() == 1 && graphL.getWeighted() == 0) { //directed and unweighted
                 TwoArrays4A pair = graphL.degrees();
@@ -121,15 +118,13 @@ public class Main4A {
                 System.out.println("Matrice d'adjacence de la transposée :");
                 graphL.printTransposed(false);
 
-                /* TODO
-                 */
-                System.out.println("TP2 Exercice 1");
-                System.out.println("DFSNum(s), and type of each arcs.");
+                /* TODO */
+                System.out.println("TP2 Exercice 1+2+3");
+                System.out.println("DFSNum(s) + cycle search.");
                 graphL.search();
-                System.out.println("TP2 Exercice 2");
-                System.out.println("Does this graph contains a cycle ?");
-                System.out.println("TP2 Exercice 3");
-                System.out.println("Cycles of the graph :");
+                Tools4A.printDebutFin(graphL.getDebut(), graphL.getFin());
+                //System.out.println("Matrice qui représente les types des arcs:\n(1=tree arc, 2=forward arc, 3=backward arc, 4=cross arc)");
+                //Tools4A.printMatrix(graphL.getArcType());
             }
             else if (graphL.getType() == 1 && graphL.getWeighted() == 1) { //directed and weighted
                 TwoArrays4A pair = graphL.degreesW();
@@ -146,15 +141,13 @@ public class Main4A {
                 System.out.println("Matrice d'adjacence de la transposée :");
                 graphL.printTransposed(false);
 
-                /* TODO
-                 */
-                System.out.println("TP2 Exercice 1");
-                System.out.println("DFSNum(s), and type of each arcs.");
+                /* TODO */
+                System.out.println("TP2 Exercice 1+2+3");
+                System.out.println("DFSNum(s) + cycle search.");
                 graphL.search();
-                System.out.println("TP2 Exercice 2");
-                System.out.println("Does this graph contains a cycle ?");
-                System.out.println("TP2 Exercice 3");
-                System.out.println("Cycles of the graph :");
+                Tools4A.printDebutFin(graphL.getDebut(), graphL.getFin());
+                //System.out.println("Matrice qui représente les types des arcs:\n(1=tree arc, 2=forward arc, 3=backward arc, 4=cross arc)");
+                //Tools4A.printMatrix(graphL.getArcType());
             }
             sc.close();
         } catch (Exception e) {

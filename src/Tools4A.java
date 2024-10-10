@@ -70,4 +70,17 @@ public class Tools4A {
             System.out.println();
         }
     }
+
+
+    /**
+     * TP2
+     * Affiche les débuts et fin de chaque sommets du graphe
+     * @param d
+     * @param f
+     */
+    public static void printDebutFin(int[] d, int[] f) {
+        System.out.println("Début et fin de chaque sommet :");
+        for (int i = 0; i < d.length; i++)
+            System.out.printf("%d : d=%d, f=%d\n", i+1, d[i], f[i]);
+    }
 }

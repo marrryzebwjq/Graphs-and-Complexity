@@ -1,4 +1,4 @@
-import javax.tools.Tool;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 public class GraphL4A {
@@ -8,6 +8,13 @@ public class GraphL4A {
     private int weighted; // 0 if unweighted, 1 otherwise
     private WeightedNode4A[] adjlistW; //one of adjlistW and adjlist is null, depending on the type of the graph
     private Node4A[] adjlist;
+
+    //TP2
+    private int[][] arcType; // 1:tree arc, 2:forward arc, 3:backward arc, 4:cross arc
+    private int[] debut;
+    private int[] fin;
+    private LinkedList<Integer> cycle; //liste de sommets visités, pour détecter les cycles
+
 
     public GraphL4A(Scanner sc) {
         String[] firstline = sc.nextLine().split(" ");
@@ -253,13 +260,9 @@ public class GraphL4A {
         }
     }
 
-    private int[][] arcType; // 1:tree arc, 2:forward arc, 3:backward arc, 4:cross arc
-    private int[] debut;
-    private int[] fin;
-    private int nb = 0;
 
     /**
-     * TP2 Exercise 1
+     * TP2
      * @param s the vertex root of the tree provided by the DFSnum algorithm
      * @param sval the value of the node s (on n'y a pas vraiment accès si on le garde pas)
      */
@@ -268,51 +271,53 @@ public class GraphL4A {
         for (Node4A next = s; next != null; next = next.getNext()){
     		if (this.debut[next.getVal()] == 0) {
                 //tree arc
-                this.arcType[sval][next.getVal()] = 1;
                 this.nb += 1;
                 this.debut[next.getVal()] = this.nb;
-                System.out.printf("noeud %d debut %d\n",next.getVal()+1,this.nb);
+                this.arcType[sval][next.getVal()] = 1;
+                this.cycle.add(next.getVal());
     			DFS_Num(adjlist[next.getVal()], next.getVal());
     		}
             else {
                 //not tree arc
                 if (this.fin[next.getVal()] == 0) {
-                    //forward (d[s]<d[n]) or backward (d[s]>d[n]) arc
                     if (this.debut[sval] < this.debut[next.getVal()])
-                        this.arcType[sval][next.getVal()] = 2;
-                    else
-                        this.arcType[sval][next.getVal()] = 3;
+                        this.arcType[sval][next.getVal()] = 2; //forward (d[s]<d[n]) arc
+                    else {
+                        this.arcType[sval][next.getVal()] = 3; //backward (d[s]>d[n]) arc (=cycle)
+                        //tous les noeuds entre s et n dans this.cycle sont dans le cycle
+                        System.out.println("Présence d'un cycle :");
+                        for(int i=this.cycle.indexOf(next.getVal()); i<this.cycle.indexOf(sval)+1; i++)
+                            System.out.print(this.cycle.get(i) + 1 + " ");
+                        System.out.println();
+                    }
                 }
-                else {
-                    //cross arc
-                    this.arcType[sval][next.getVal()] = 4;
-                }
+                else
+                    this.arcType[sval][next.getVal()] = 4; //cross arc
             }
     	}
         this.nb += 1;
         this.fin[sval] = this.nb;
-        System.out.printf("noeud %d fin %d\n",sval+1,this.nb);
+        this.cycle.remove((Integer) sval);
     }
 
+    private int nb = 0; //pour remplir d[] et f[]
     /**
-     * TP2 Exercise 2
+     * TP2
      * Perform a graph search using the DFSnum algorithm
      */
     public void search() {
         this.debut = new int[this.n];
         this.fin = new int[this.n];
         this.arcType = new int[this.n][this.n];
+        this.cycle = new LinkedList<Integer>();
         for (int i=0; i<this.n; i++) { //parcours de tous les noeuds (juste les noeuds, pas leurs successeurs)
             if (this.debut[i] == 0) {
-                System.out.println("--- ---");
                 this.nb += 1;
                 this.debut[i] = this.nb;
-                System.out.printf("noeud %d debut %d\n",i+1,this.nb);
+                this.cycle.add(i);
                 DFS_Num(adjlist[i], i);
             }
         }
-        System.out.println("Matrice qui représente les types des arcs.\n(1:tree arc, 2:forward arc, 3:backward arc, 4:cross arc)");
-        Tools4A.printMatrix(this.arcType);
     }
     
 
@@ -329,10 +334,19 @@ public class GraphL4A {
     public WeightedNode4A[] getAdjlistW() {
         return adjlistW;
     }
-
-    //TP1
     public Node4A[] getAdjlist() {
         return adjlist;
+    }
+
+    //TP2
+    public int[][] getArcType() {
+        return arcType;
+    }
+    public int[] getDebut() {
+        return debut;
+    }
+    public int[] getFin() {
+        return fin;
     }
 }
 		

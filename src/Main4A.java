@@ -14,7 +14,6 @@ public class Main4A {
             File file2 = new File("resources/ExempleTP1-smallgraph-undirectedW.txt");
             File file3 = new File("resources/ExempleTP1-smallgraph-directed.txt");
             File file4 = new File("resources/ExempleTP1-smallgraph-directedW.txt");
-
             file = file0;
 
             int[] v1 = {1,2,3,4,5,4,2,1,3}; //exo 2

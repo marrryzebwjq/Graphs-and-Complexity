@@ -275,7 +275,10 @@ public class GraphL4A {
                 this.debut[next.getVal()] = this.nb;
                 this.arcType[sval][next.getVal()] = 1;
                 this.cycle.add(next.getVal());
+                System.out.print(next.getVal()+1 + " ");
+
     			DFS_Num(adjlist[next.getVal()], next.getVal());
+    		
     		}
             else {
                 //not tree arc
@@ -285,10 +288,10 @@ public class GraphL4A {
                     else {
                         this.arcType[sval][next.getVal()] = 3; //backward (d[s]>d[n]) arc (=cycle)
                         //tous les noeuds entre s et n dans this.cycle sont dans le cycle
-                        System.out.println("Présence d'un cycle :");
-                        for(int i=this.cycle.indexOf(next.getVal()); i<this.cycle.indexOf(sval)+1; i++)
-                            System.out.print(this.cycle.get(i) + 1 + " ");
-                        System.out.println();
+                        //System.out.println("Présence d'un cycle :");
+                        //for(int i=this.cycle.indexOf(next.getVal()); i<this.cycle.indexOf(sval)+1; i++)
+                        //    System.out.print(this.cycle.get(i) + 1 + " ");
+                        //System.out.println();
                     }
                 }
                 else
@@ -299,6 +302,12 @@ public class GraphL4A {
         this.fin[sval] = this.nb;
         this.cycle.remove((Integer) sval);
     }
+    
+    
+    
+    
+    
+    
     // exactement la même fonction qu'au dessuss
     private void DFS_NumW(WeightedNode4A s, int sval) {
         //récursivité sur chaque successeur de s
@@ -349,15 +358,45 @@ public class GraphL4A {
                 this.nb += 1;
                 this.debut[i] = this.nb;
                 this.cycle.add(i);
+                System.out.print(i+1 + " ");
                 if (this.weighted == 0)
                     DFS_Num(adjlist[i], i);
                 else
                     DFS_NumW(adjlistW[i], i);
             }
         }
+        System.out.println();
     }
     
 
+    private int[] somme;
+    
+    
+    public void SommePoidsSommets() {
+    	this.somme = new int[this.n];
+    	
+    	for (int i=0; i<this.n; i++) { 
+    		for (WeightedNode4A next = adjlistW[i]; next != null; next = next.getNext()) {
+    			somme[i] += next.getWeight();
+    		}
+    		System.out.printf("Sommet %d : poids=%d\n", i, this.somme[i]);
+    	}
+    	
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     public int getType() {
         return this.type;

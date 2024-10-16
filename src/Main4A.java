@@ -7,14 +7,14 @@ public class Main4A {
     public static void main(String args[]) {
 
         try {
-            //File file= new File(args[0]);
-            File file = new File("resources/ExempleTP1.txt"); // remplacement de arg[0] par le path (comme ça pas besoin de le mettre dans les config du Run)
+            File file= new File(args[0]);
+            /**File file = new File("resources/ExempleTP1.txt");
             File file0 = new File("resources/ExempleTP2.txt");
             File file1 = new File("resources/ExempleTP1-smallgraph-undirected.txt");
             File file2 = new File("resources/ExempleTP1-smallgraph-undirectedW.txt");
             File file3 = new File("resources/ExempleTP1-smallgraph-directed.txt");
             File file4 = new File("resources/ExempleTP1-smallgraph-directedW.txt");
-            file = file0;
+            file = file0;**/
 
             int[] v1 = {1,2,3,4,5,4,2,1,3}; //exo 2
             int[] v2 = {1,2,3,5};
@@ -52,6 +52,22 @@ public class Main4A {
                 graphM.printTransposed(true);
                 System.out.println("Liste d'adjacence de la transposée :");
                 graphM.printTransposed(false);
+                
+                
+
+                System.out.println("Exercice 1, matrice G1 :");
+                float[][] mat = graphM.getAdjmat();
+                for(int i=0; i<mat.length; i++) {
+                	for(int j=0; j<mat.length; j++) {
+                		if(mat[i][j] != 0) {
+                			System.out.printf("(%d,%d)", i, j);
+                		}
+                	}
+                }
+                System.out.println();
+                
+                
+                
             }
 
 
@@ -101,6 +117,16 @@ public class Main4A {
                 Tools4A.printDebutFin(graphL.getDebut(), graphL.getFin());
                 //System.out.println("Matrice qui représente les types des arcs:\n(1=tree arc, 2=forward arc, 3=backward arc, 4=cross arc)");
                 //Tools4A.printMatrix(graphL.getArcType());
+                
+                
+                
+
+                System.out.println("Exercice 4");
+                graphL.SommePoidsSommets();
+                
+                
+
+                System.out.println("------------------------------------------------------");
             }
             else if (graphL.getType() == 1 && graphL.getWeighted() == 0) { //directed and unweighted
                 TwoArrays4A pair = graphL.degrees();
@@ -120,10 +146,46 @@ public class Main4A {
                 /* TODO */
                 System.out.println("TP2 Exercice 1+2+3");
                 System.out.println("DFSNum(s) + cycle search.");
+                
+                
+                
+
+                System.out.println("Exercice 3");
                 graphL.search();
                 Tools4A.printDebutFin(graphL.getDebut(), graphL.getFin());
-                //System.out.println("Matrice qui représente les types des arcs:\n(1=tree arc, 2=forward arc, 3=backward arc, 4=cross arc)");
-                //Tools4A.printMatrix(graphL.getArcType());
+                
+                
+                System.out.println("Matrice qui représente les types des arcs:\n(1=tree arc, 2=forward arc, 3=backward arc, 4=cross arc)");
+                Tools4A.printMatrix(graphL.getArcType());
+                
+
+
+                System.out.println("Exercice 3 : ");
+                float[][] mat = graphM.getAdjmat();
+                for(int i=0; i<mat.length; i++) {
+                	for(int j=0; j<mat.length; j++) {
+                		if(mat[i][j] == 1) {
+                			System.out.printf("(%d,%d) de type tree arc\n", i, j);
+                		}
+                		if(mat[i][j] == 2) {
+                			System.out.printf("(%d,%d) de type forward arc\n", i, j);
+                		}
+                		if(mat[i][j] == 3) {
+                			System.out.printf("(%d,%d) de type backward arc\n", i, j);
+                		}
+                		if(mat[i][j] == 4) {
+                			System.out.printf("(%d,%d) de type cross arc\n", i, j);
+                		}
+                	}
+                }
+                System.out.println();
+                
+                
+                
+                
+                
+                
+                
             }
             else if (graphL.getType() == 1 && graphL.getWeighted() == 1) { //directed and weighted
                 TwoArrays4A pair = graphL.degreesW();

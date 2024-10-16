@@ -212,7 +212,7 @@ public class GraphM4A {
 				this.debut[i] = this.nb;
 
 				for (int j = 0; j < this.n; j++) {
-					//DFS_Num(adjmat[i][j], i);
+					CCMat_Recu(adjmat[i][j], i);
 
 				}
 			}
@@ -226,7 +226,7 @@ public class GraphM4A {
 	 * @param sval the value of the node s (on n'y a pas vraiment accès si on le
 	 *             garde pas)
 	 */
-	private void DFS_Num(int s, int sval) {
+	private void CCMat_Recu(float s, int sval) {
 		// récursivité sur chaque successeur de s
 		for (int i = 0; i < this.n; i++) { // parcours de tous les noeuds (juste les noeuds, pas leurs successeurs)
 
@@ -235,7 +235,7 @@ public class GraphM4A {
 				this.debut[i] = this.nb;
 
 				for (int j = 0; j < this.n; j++) {
-					//DFS_Num(adjmat[i][j], i);
+					CCMat_Recu(adjmat[i][j], i);
 
 				}
 			}
